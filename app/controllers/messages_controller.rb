@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message: params[:message])
     # @message.user_id = current_user.id
       if @message.save
-        flash[:notice] = "タスク作成に成功しました"
+        flash[:notice] = "メッセージ作成に成功しました"
         redirect_to "/"
       else
         flash[:error] = @message.errors.full_messages
