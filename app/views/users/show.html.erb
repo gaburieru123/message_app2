@@ -1,0 +1,55 @@
+
+  <div class="container">
+    <% if current_page?(user_path) %>
+      <header>
+        <div class="header_user_name">
+          <%= @user.name %>
+        </div>
+      </header>
+    <% end %>
+    <main class="main">
+      <h1>Users#show</h1>
+        
+      <%= link_to "トップページ", root_path %>
+      <br>
+      <div class="re_name">
+        <%= @user.name %>
+      <div>
+        <% @messages.each do |msg| %>
+          <% if msg.sender_id == current_user.id %>
+            <div style="text-align: right;">
+              <%= msg.sender_id %>
+              <%= msg.recipient_id %>
+              <%= current_user.name%>
+              <%= msg.message %>
+              <br>
+              <%= msg.created_at%>
+              <br>
+            </div>
+          <% elsif msg.sender_id == @user.id %>
+            <div style="text-align: left;">
+              <%= msg.sender_id %>
+              <%= msg.recipient_id %>
+              <%= msg.message %>
+              <br>
+              <%= msg.created_at%>
+              <br>
+            </div>
+          <% end %>
+        <% end %>
+    </main>
+
+    <footer>
+      <div>
+      <h2>新規投稿</h2>
+      <%= form_with url: messages_path do |f| %>
+
+        <p>message</p>
+        <%= f.text_area :message, size: "50x10" %></br>
+        <%= f.hidden_field :recipient_id, value: params[:id] %>
+
+        <%= f.submit '送信'%>
+      <% end %>
+      </div>
+    </footer>
+  </div>

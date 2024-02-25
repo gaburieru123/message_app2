@@ -1,0 +1,11 @@
+<h1>Sent Messages</h1>
+
+<ul>
+  <% @sent_messages.each do |message| %>
+    <li>
+      Sent to: <%= message.recipient.email %>
+      Message: <%= message.message %>
+      Sent at: <%= message.created_at %>
+    </li>
+  <% end %>
+</ul>
