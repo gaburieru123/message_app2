@@ -14,37 +14,26 @@
  *= require_self
  */
 
-.header_container{
-  display: flex;
-  justify-content: space-between;
-}
-.show_header{
-  display: flex;
-  justify-content: space-between;
-}
 
 body{
   margin: 0px;
 }
-.show-container{
+.container{
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
-.show-header{
+header{
   background-color: rgba(245, 178, 177, 0.5);
 }
-.show-main{
+main{
   flex: 1;
   background-color: rgba(255, 253, 237, 1);
   overflow-y: scroll;
 }
-.show-footer{
+footer{
   background-color: rgba(201, 187, 155, 0.5);
-}
-#message{
-  width:100%;
 }
 .msg{
   display: inline-block;
