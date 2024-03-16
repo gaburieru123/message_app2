@@ -1,0 +1,10 @@
+<h2>メッセージ編集</h2>
+
+<%= form_with(model: @message, url: message_path(@message), method: :patch) do |f| %>
+  <p>メッセージ</p>
+  <div>
+    <%= f.text_area :message, value: @message.message, size: "50x10" %>
+  </div>
+  <br>
+  <%= f.submit '更新' %>
+<% end %>
