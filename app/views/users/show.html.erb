@@ -9,7 +9,6 @@
   <% end %>
 
   <main class="show-main">
-    <p>Users#show</p>
       <%= @user.name %>
       <% @messages.each do |msg| %>
         <% if msg.sender_id == current_user.id %>
@@ -21,6 +20,7 @@
             <br>
             <%= msg.created_at%>
             <br>
+            <%= link_to "編集", edit_message_path(msg.id), class: "btn btn-primary" %>
           </div>
         <% elsif msg.sender_id == @user.id %>
           <div style="text-align: left;">
