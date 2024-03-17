@@ -31,6 +31,18 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    if current_user.id == message.sender_id && message.destroy
+      flash[:notice] = "メッセージ削除に成功しました"
+      redirect_to "/users/#{message.recipient_id}"
+    else
+      flash[:notice] = "無効な操作です。メッセージ削除はできません。"
+      redirect_to "/"
+    end
+  end
+
+  
   private
 
   def edit_message_params
