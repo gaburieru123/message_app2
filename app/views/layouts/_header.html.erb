@@ -2,11 +2,9 @@
       <div class="header_container">
         <% if user_signed_in? %>
             <div><%= link_to "#{current_user.name}", user_path(current_user.id), class: "text-white" %></div>
-            <div class="top" ><%= link_to "トップ", root_path, class: "text-white" %></div>
+            <div class="top" ><%= link_to "ホーム", root_path, class: "text-white" %></div>
             <div class="user_all"><%= link_to "ユーザー一覧", users_path, class: "text-white" %></div>
-            <div class="new_msg"><%= link_to "新規投稿", new_message_path, class: "text-white" %></div>
             <div class="logout"><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
-            
         <% else %>
             <div class="signup"><%= link_to "サインアップ", new_user_registration_path, class: "text-white" %></div>
             <div class="login"><%= link_to "ログイン", new_user_session_path, class: "text-white" %></div>

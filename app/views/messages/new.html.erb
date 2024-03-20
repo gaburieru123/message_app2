@@ -1,9 +1,0 @@
-<%= link_to "トップページ", root_path %>
-
-<h2>新規投稿</h2>
-
-<%= form_with url: messages_path do |f| %>
-  <p>message</p>
-  <%= f.text_area :message, size: "50x10" %></br>
-  <%= f.submit '送信'%>
-<% end %>
