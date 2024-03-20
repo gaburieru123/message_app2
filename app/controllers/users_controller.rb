@@ -7,8 +7,6 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @re_uname = @user.name
-    @current_uname = User.find_by(name: current_user.name)
     @sent_messages = current_user.sent_messages.where(recipient_id: params[:id])
     @received_messages = @user.sent_messages.where(recipient_id: current_user.id)
     if current_user.id == @user.id
