@@ -7,7 +7,7 @@
             <div><%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %></div>
             <% if @user.id == current_user.id %>
               <p class="d-flex justify-content-end">
-                <div><%= button_to "アカウント削除", user_path(current_user.id), method: :delete, data: { turbo_confirm: "本当に削除しますか?" }, class: "text-white" %></div>
+                <div><%= button_to "アカウント削除", user_path(current_user.id), method: :patch, data: { turbo_confirm: "本当に削除しますか?" }, class: "text-white" %></div>
               </p>
             <% end %>
         <% else %>
