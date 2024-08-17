@@ -26,20 +26,16 @@
 #  end
 
 class Users::SessionsController < Devise::SessionsController
- # POST /resource/sign_in
  def create
-  binding.b
-   self.resource = warden.authenticate!(auth_options)
-   if resource.deleted_at.nil?
-    flash[:notice] = 'アカウント有効ですよー。'
-     set_flash_message!(:notice, :signed_in)
-     sign_in(resource_name, resource)
-     yield resource if block_given?
-     respond_with resource, location: after_sign_in_path_for(resource)
-   else
-    puts "テストデバッグ"
-     flash[:alert] = "アカウントは無効ですよー。"
-     redirect_to new_user_session_path
+   super do |resource|
+     if resource.deleted_at
+       flash[:notice] = "アカウントは無効ですよー。"
+       sign_out(resource)
+       redirect_to new_user_session_path
+       return
+     else
+       flash[:notice] = "アカウント有効ですよー。"
+     end
    end
  end
 end
